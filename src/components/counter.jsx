@@ -8,33 +8,29 @@ class Counter extends Component {
     tags: ['tag_1', 'tag_2', 'tag_3'],
   };
 
-  renderTags() {
-    // Conditional rendering ... warn if there are no tags
-    if (this.state.tags.length === 0)
-      // {this.state.tags.length === 0 && `Please create a new tag`}
-      return <p className="text-danger">There are no tags!</p>;
+  // used an arrow function because arrow functions INHERIT the "this" keyword
+  handleIncrement = () => {
+    // that is not going to work, react does not work that way
+    // this.state.count++;
 
-    // if the length is longer than 0 than return an ul with the <li> elements mapped (like in a for loop)
-    return (
-      <ul>
-        {this.state.tags.map((tag) => (
-          <li key={tag}> {tag} </li>
-        ))}
-      </ul>
-    );
-  }
+    // here is the propper aproach, you must change the value with the state, so react will know what to do
+    this.setState({ count: this.state.count + 1 });
+  };
 
   // this is the render method
   render() {
     // here you can pass javascript code
-    // JS CODE GOES HERE
 
     // this is actually what is shown in the browser, the UI
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        {this.renderTags()}
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
   }
