@@ -1,21 +1,30 @@
-// imported whatever is needed, but the React is not mandatory to import because is imported by default since lates react updates. 
+// imported whatever is needed, but the React is not mandatory to import because is imported by default since lates react updates.
 import React, { Component } from 'react';
 
 class Counter extends Component {
   // state is an object that is outside the render method
   state = {
     count: 0,
+    tags: {
+      tag: ['tag1', 'tag2', 'tag3'],
+      tag_id: [1, 2, 3],
+    },
   };
-  
+
   // this is the render method
   render() {
     // here you can pass javascript code
 
-    // this is actually what is shown in the browser, the UI 
+    // this is actually what is shown in the browser, the UI
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm">Increment</button>
+        <ul>
+          {this.state.tags.tag.map((tag) => (
+            <li key={tag} >{tag}</li>
+          ))}
+        </ul>
       </div>
     );
   }
