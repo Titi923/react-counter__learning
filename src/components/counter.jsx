@@ -5,11 +5,26 @@ class Counter extends Component {
   // state is an object that is outside the render method
   state = {
     count: 0,
-    tags: {
-      tag: ['tag1', 'tag2', 'tag3'],
-      tag_id: [1, 2, 3],
-    },
+    tags: ['tag_1', 'tag_2', 'tag_3'],
   };
+
+  renderTags() {
+    if (this.state.tags.length === 0)
+      return (
+        <>
+          {this.state.tags.length === 0 && `Please create a new tag`}
+          <p className="text-danger">There are no tags!</p>
+        </>
+      );
+
+    return (
+      <ul>
+        {this.state.tags.map((tag) => (
+          <li key={tag}> {tag} </li>
+        ))}
+      </ul>
+    );
+  }
 
   // this is the render method
   render() {
@@ -18,13 +33,9 @@ class Counter extends Component {
     // this is actually what is shown in the browser, the UI
     return (
       <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {this.state.tags.tag.map((tag) => (
-            <li key={tag} >{tag}</li>
-          ))}
-        </ul>
+        {/* <span className={this.getBadgeClasses()}>{this.formatCount()}</span> */}
+        {/* <button className="btn btn-secondary btn-sm">Increment</button> */}
+        {this.renderTags()}
       </div>
     );
   }
