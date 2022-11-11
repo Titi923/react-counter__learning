@@ -9,14 +9,12 @@ class Counter extends Component {
   };
 
   renderTags() {
+    // Conditional rendering ... warn if there are no tags
     if (this.state.tags.length === 0)
-      return (
-        <>
-          {this.state.tags.length === 0 && `Please create a new tag`}
-          <p className="text-danger">There are no tags!</p>
-        </>
-      );
+      // {this.state.tags.length === 0 && `Please create a new tag`}
+      return <p className="text-danger">There are no tags!</p>;
 
+    // if the length is longer than 0 than return an ul with the <li> elements mapped (like in a for loop)
     return (
       <ul>
         {this.state.tags.map((tag) => (
@@ -29,12 +27,13 @@ class Counter extends Component {
   // this is the render method
   render() {
     // here you can pass javascript code
+    // JS CODE GOES HERE
 
     // this is actually what is shown in the browser, the UI
     return (
       <div>
-        {/* <span className={this.getBadgeClasses()}>{this.formatCount()}</span> */}
-        {/* <button className="btn btn-secondary btn-sm">Increment</button> */}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
         {this.renderTags()}
       </div>
     );
