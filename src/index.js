@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // stuff imported by me
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import Counters from './components/counters';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
     {/* Decided  to render on the root div, the Counters component, which is the main app in this project */}
-    <Counters/>
-  </React.StrictMode>
+    <Counters />
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
